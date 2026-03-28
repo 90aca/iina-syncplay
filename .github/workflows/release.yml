@@ -36,7 +36,7 @@ jobs:
       - name: Package .iinaplgz
         run: |
           cp -r packages/plugin/dist SyncPlay.iinaplugin
-          zip -r SyncPlay.iinaplgz SyncPlay.iinaplugin
+          cd SyncPlay.iinaplugin && zip -r ../SyncPlay.iinaplgz .
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

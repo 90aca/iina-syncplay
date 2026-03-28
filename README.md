@@ -3,7 +3,7 @@
 IINA plugin for synchronized playback across multiple players, perfect for
 watching stuff together.
 
-![](assets/showcase.mp4)
+https://github.com/user-attachments/assets/4cecfce5-797c-45b3-97e7-66d0a55301fa
 
 A free server is hosted at `iina-syncplay.90aca.com` and used by default. You
 can self-host the server from `packages/server` for more privacy and change the

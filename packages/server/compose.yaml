@@ -1,6 +1,0 @@
-services:
-  syncplay:
-    build: .
-    ports:
-      - "8787:3000"
-    restart: unless-stopped

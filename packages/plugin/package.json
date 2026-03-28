@@ -6,7 +6,6 @@
   "scripts": {
     "build": "rm -r dist || true && bun build-entry && bun build-window && cp Info.json dist/ && cp ui/preferences/index.html dist/preferences.html",
     "build-entry": "bun build --minify --production src/entry.ts --outdir=dist",
-    "build-sidebar": "echo 'import tailwindcss from \"bun-plugin-tailwind\"; await Bun.build({ entrypoints: [\"ui/sidebar/index.html\"], outdir: \"dist\", target: \"browser\", compile: true, minify: true, plugins: [tailwindcss] });' | bun run - && mv dist/index.html dist/sidebar.html",
     "build-window": "echo 'import tailwindcss from \"bun-plugin-tailwind\"; await Bun.build({ entrypoints: [\"ui/window/index.html\"], outdir: \"dist\", target: \"browser\", compile: true, minify: true, plugins: [tailwindcss] });' | bun run - && mv dist/index.html dist/window.html",
     "test": "bun test src/entry.test.ts"
   },

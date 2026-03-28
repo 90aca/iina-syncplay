@@ -129,11 +129,11 @@ function Lobby({ loading, error, onCreate, onJoin }: LobbyProps) {
   }
 
   return (
-    <div class="min-h-screen flex flex-col items-center justify-center gap-5 p-6">
+    <div class="min-h-screen flex flex-col items-center justify-center gap-5 p-6 bg-white dark:bg-neutral-900 text-black dark:text-white">
       {error && <p class="text-xs text-red-500">{error}</p>}
 
       <button
-        class="w-full max-w-xs px-4 py-2 bg-black text-white text-sm rounded-sm disabled:opacity-40"
+        class="w-full max-w-xs px-4 py-2 bg-black text-white dark:bg-white dark:text-black text-sm rounded-sm disabled:opacity-40"
         onClick={onCreate}
         disabled={loading}
       >
@@ -153,11 +153,11 @@ function Lobby({ loading, error, onCreate, onJoin }: LobbyProps) {
               setInputError("");
             }}
             onKeyDown={(e) => e.key === "Enter" && handleJoin()}
-            class="flex-1 px-3 py-2 text-sm border border-neutral-300 rounded-sm outline-none focus:border-black"
+            class="flex-1 px-3 py-2 text-sm border border-neutral-300 dark:border-neutral-600 rounded-sm outline-none focus:border-black dark:focus:border-white bg-white dark:bg-neutral-800 text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
             disabled={loading}
           />
           <button
-            class="px-4 py-2 text-sm border border-neutral-300 rounded-sm hover:border-black disabled:opacity-40"
+            class="px-4 py-2 text-sm border border-neutral-300 dark:border-neutral-600 rounded-sm hover:border-black dark:hover:border-white disabled:opacity-40"
             onClick={handleJoin}
             disabled={loading}
           >
@@ -177,11 +177,11 @@ type RoomProps = {
 
 function Room({ code, onLeave }: RoomProps) {
   return (
-    <div class="min-h-screen flex flex-col items-center justify-center gap-4 p-6">
-      <p class="text-xs text-neutral-400 uppercase tracking-widest">Room</p>
+    <div class="min-h-screen flex flex-col items-center justify-center gap-4 p-6 bg-white dark:bg-neutral-900 text-black dark:text-white">
+      <p class="text-xs text-neutral-400 dark:text-neutral-500 uppercase tracking-widest">Room</p>
       <p class="text-3xl font-mono font-bold tracking-widest">{code}</p>
       <button
-        class="mt-2 px-4 py-2 text-sm border border-neutral-300 rounded-sm hover:border-black"
+        class="mt-2 px-4 py-2 text-sm border border-neutral-300 dark:border-neutral-600 rounded-sm hover:border-black dark:hover:border-white"
         onClick={onLeave}
       >
         Leave

@@ -15,7 +15,7 @@ function getOrCreateRoom(code: string): Room {
   return rooms.get(code)!;
 }
 
-Bun.serve<Client>({
+const server = Bun.serve<Client>({
   port: 3000,
   fetch(req, server) {
     const url = new URL(req.url);
@@ -96,6 +96,8 @@ Bun.serve<Client>({
     },
   },
 });
+
+console.log(`Started server on http://localhost:${server.port}`);
 
 function broadcast(room: Room, message: Message, exclude?: ServerWebSocket<Client>) {
   const payload = JSON.stringify(message);

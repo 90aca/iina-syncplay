@@ -1,0 +1,47 @@
+name: Release Plugin
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version number (integer, must be greater than current ghVersion)"
+        required: true
+        type: number
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install
+        working-directory: packages/plugin
+
+      - name: Set ghVersion in Info.json
+        run: |
+          jq '.ghVersion = ($ver | tonumber)' \
+            --arg ver "${{ inputs.version }}" \
+            packages/plugin/Info.json > tmp.json
+          mv tmp.json packages/plugin/Info.json
+
+      - name: Build
+        run: bun run build
+        working-directory: packages/plugin
+
+      - name: Package .iinaplgz
+        run: |
+          cp -r packages/plugin/dist SyncPlay.iinaplugin
+          zip -r SyncPlay.iinaplgz SyncPlay.iinaplugin
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ inputs.version }}
+          name: v${{ inputs.version }}
+          files: SyncPlay.iinaplgz
+          generate_release_notes: true

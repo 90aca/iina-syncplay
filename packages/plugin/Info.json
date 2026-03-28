@@ -1,0 +1,19 @@
+{
+  "name": "SyncPlay",
+  "identifier": "com.90aca.syncplay",
+  "description": "IINA plugin that allows people to watch the same content",
+  "version": "1.0.0",
+  "author": {
+    "name": "90aca",
+    "url": "https://github.com/90aca/iina-syncplay"
+  },
+  "entry": "entry.js",
+  "sidebarTab": { "name": "SyncPlay" },
+  "permissions": ["network-request", "file-system", "show-osd"],
+  "allowedDomains": ["*"],
+  "preferencesPage": "preferences.html",
+  "preferenceDefaults": {
+    "url": "wss://iina-syncplay.90aca.com"
+  },
+  "ghRepo": "90aca/iina-syncplay"
+}

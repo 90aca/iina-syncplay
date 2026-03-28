@@ -1,0 +1,7 @@
+{
+  "name": "syncplay",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
